@@ -11,6 +11,15 @@ namespace AzIdentityApp
         {
             var uri = new Uri($"https://{accountName}.queue.core.windows.net/{queueName}");
             var queue = new QueueClient(uri, new DefaultAzureCredential());
+            //var queue = new QueueClient(uri, new DefaultAzureCredential(new DefaultAzureCredentialOptions { IncludeEnvironmentCredential = true }));
+            //var co = new DefaultAzureCredentialOptions
+            //{
+            //    IncludeEnvironmentCredential = true,
+            //    IncludeInteractiveBrowserCredential = true,
+            //    IncludeManagedIdentityCredential = true,
+            //    IncludeSharedTokenCacheCredential = true
+            //};
+            //var queue = new QueueClient(uri, new DefaultAzureCredential(co));
 
             Console.WriteLine($@"calling CreateAsync() on ""{uri}""");
             await queue.CreateAsync();
